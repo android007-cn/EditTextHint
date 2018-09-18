@@ -11,7 +11,7 @@ public class RelativeLayoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.relative_layout);
-        new EditTextHint(R.id.editText).hintText("RelativeLayout中为EditText添加hint").activity(this).showHint();
+        new EditTextHint(this, "RelativeLayout中为EditText添加hint", R.id.editText).showHint();
     }
 
 

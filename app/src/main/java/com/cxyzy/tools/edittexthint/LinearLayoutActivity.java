@@ -12,7 +12,7 @@ public class LinearLayoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_layout);
-        new EditTextHint(R.id.editText).hintText("LinearLayout中为EditText添加hint").hintColor(Color.RED).hintSizeInDp(12).activity(this).showHint();
+        new EditTextHint(this, "LinearLayout中为EditText添加hint", R.id.editText).hintColor(Color.RED).hintSizeInDp(12).showHint();
     }
 
 

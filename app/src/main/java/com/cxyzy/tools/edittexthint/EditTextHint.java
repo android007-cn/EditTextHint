@@ -13,16 +13,32 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class EditTextHint {
-    private int mEditTextResId;
     private Activity mActivity;
+    /**
+     * EditText控件资源ID
+     */
+    private int mEditTextResId;
+    /**
+     * hint提示文字
+     */
     private String mHintText;
-    private RelativeLayout.LayoutParams mLayoutParams;
+    /**
+     * hint颜色
+     */
     private int mHintColor;
+    /**
+     * hint字体大小，单位：dp
+     */
     private float mHintSizeInDp;
+    /**
+     * hint在父控件中位置
+     */
+    private RelativeLayout.LayoutParams mLayoutParams;
 
-    public EditTextHint(int editTextResId) {
+    public EditTextHint(Activity activity, String hintText, int editTextResId) {
+        this.mActivity = activity;
+        this.mHintText = hintText;
         this.mEditTextResId = editTextResId;
-        this.mHintText = "默认Hint";
         this.mHintColor = Color.LTGRAY;
         this.mHintSizeInDp = 15;
         this.mLayoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -31,38 +47,53 @@ public class EditTextHint {
         mLayoutParams.addRule(RelativeLayout.ALIGN_BOTTOM, editTextResId);
     }
 
-    public EditTextHint activity(Activity activity) {
-        this.mActivity = activity;
-        return this;
-    }
-
-    public EditTextHint hintText(String hintText) {
-        this.mHintText = hintText;
-        return this;
-    }
-
-    public EditTextHint layoutParams(RelativeLayout.LayoutParams layoutParams) {
-        this.mLayoutParams = layoutParams;
-        return this;
-    }
-
-    public EditTextHint leftMargin(int leftMargin) {
-        this.mLayoutParams.leftMargin = leftMargin;
-        return this;
-    }
-
-    public EditTextHint bottomMargin(int bottomMargin) {
-        this.mLayoutParams.bottomMargin = bottomMargin;
-        return this;
-    }
-
+    /**
+     * hint颜色
+     * @param hintColor
+     * @return
+     */
     public EditTextHint hintColor(@ColorInt int hintColor) {
         this.mHintColor = hintColor;
         return this;
     }
 
+    /**
+     * 设置hint字体大小
+     * @param hintSizeInDp
+     * @return
+     */
     public EditTextHint hintSizeInDp(float hintSizeInDp) {
         this.mHintSizeInDp = hintSizeInDp;
+        return this;
+    }
+
+    /**
+     * 设置距离父控件左边距
+     * @param leftMargin
+     * @return
+     */
+    public EditTextHint leftMargin(int leftMargin) {
+        this.mLayoutParams.leftMargin = leftMargin;
+        return this;
+    }
+
+    /**
+     * 设置距离父控件底部边距
+     * @param bottomMargin
+     * @return
+     */
+    public EditTextHint bottomMargin(int bottomMargin) {
+        this.mLayoutParams.bottomMargin = bottomMargin;
+        return this;
+    }
+
+    /**
+     * 如果需要完全控制Hint的布局位置，可以不设置左边距和底边距，而设置layoutParams
+     * @param layoutParams
+     * @return
+     */
+    public EditTextHint layoutParams(RelativeLayout.LayoutParams layoutParams) {
+        this.mLayoutParams = layoutParams;
         return this;
     }
 

@@ -14,9 +14,10 @@ public static void setEditTextHintWithSize(EditText editText, String hintText, @
 
 优化方案：
 1.在EditText上覆盖一层TextView来做Hint提示，支持：
-  1）设置Hint颜色、字体大小等
+  1）设置Hint颜色、字体大小、位置等
 2.使用方法：
  1）最简用法：
-    new EditTextHint(R.id.editText).hintText("RelativeLayout中为EditText添加hint").activity(this).showHint();
+    new EditTextHint(this, "RelativeLayout中为EditText添加hint", R.id.editText).showHint();
  2）一般用法：
-    new EditTextHint(R.id.editText).hintText("LinearLayout中为EditText添加hint").hintColor(Color.RED).hintSizeInDp(12).activity(this).showHint();
+    new EditTextHint(this, "LinearLayout中为EditText添加hint", R.id.editText).hintColor(Color.RED).hintSizeInDp(12).showHint();
+ 更多用法详见源代码。
