@@ -112,13 +112,17 @@ public class EditTextHint {
             parentLayout = (RelativeLayout) editText.getParent();
             parentLayout.addView(textView);
         } else {
+            if(editText.getLayoutParams().width==0)
+            {
+                editText.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+            }
             parentLayout = (ViewGroup) editText.getParent();
             RelativeLayout relativeLayout = new RelativeLayout(mActivity);
             int originalIndexInParent = parentLayout.indexOfChild(editText);
             parentLayout.removeView(editText);
             relativeLayout.addView(editText);
-            parentLayout.addView(relativeLayout, originalIndexInParent);
             relativeLayout.addView(textView);
+            parentLayout.addView(relativeLayout, originalIndexInParent);
         }
 
         if (!TextUtils.isEmpty(editText.getText().toString())) {
