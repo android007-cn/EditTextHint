@@ -19,8 +19,8 @@
 
  1. 在EditText上覆盖一层TextView来做Hint提示，支持设置Hint颜色、字体大小、位置等
  2. 使用方法：
- 1）最简用法：
+   1）最简用法：
     new EditTextHint(this, "RelativeLayout中为EditText添加hint", R.id.editText).showHint();
- 2）一般用法：
+   2）一般用法：
     new EditTextHint(this, "LinearLayout中为EditText添加hint", R.id.editText).hintColor(Color.RED).hintSizeInDp(12).showHint();
  更多用法详见源代码。
