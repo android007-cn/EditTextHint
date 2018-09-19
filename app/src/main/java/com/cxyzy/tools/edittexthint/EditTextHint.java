@@ -16,15 +16,15 @@ import android.widget.TextView;
  * @author 程序园中猿
  */
 public class EditTextHint {
-    private Activity mActivity;
+    private final Activity mActivity;
     /**
      * EditText控件资源ID
      */
-    private int mEditTextResId;
+    private final int mEditTextResId;
     /**
      * hint提示文字
      */
-    private String mHintText;
+    private final String mHintText;
     /**
      * hint颜色
      */
@@ -52,8 +52,7 @@ public class EditTextHint {
 
     /**
      * hint颜色
-     * @param hintColor
-     * @return
+     * @param hintColor 颜色色值
      */
     public EditTextHint hintColor(@ColorInt int hintColor) {
         this.mHintColor = hintColor;
@@ -62,8 +61,7 @@ public class EditTextHint {
 
     /**
      * 设置hint字体大小
-     * @param hintSizeInDp
-     * @return
+     * @param hintSizeInDp 字体大小dp值
      */
     public EditTextHint hintSizeInDp(float hintSizeInDp) {
         this.mHintSizeInDp = hintSizeInDp;
@@ -72,8 +70,7 @@ public class EditTextHint {
 
     /**
      * 设置距离父控件左边距
-     * @param leftMargin
-     * @return
+     * @param leftMargin 左边距
      */
     public EditTextHint leftMargin(int leftMargin) {
         this.mLayoutParams.leftMargin = leftMargin;
@@ -82,8 +79,7 @@ public class EditTextHint {
 
     /**
      * 设置距离父控件底部边距
-     * @param bottomMargin
-     * @return
+     * @param bottomMargin 底边距
      */
     public EditTextHint bottomMargin(int bottomMargin) {
         this.mLayoutParams.bottomMargin = bottomMargin;
@@ -92,8 +88,7 @@ public class EditTextHint {
 
     /**
      * 如果需要完全控制Hint的布局位置，可以不设置左边距和底边距，而设置layoutParams
-     * @param layoutParams
-     * @return
+     * @param layoutParams 布局位置
      */
     public EditTextHint layoutParams(RelativeLayout.LayoutParams layoutParams) {
         this.mLayoutParams = layoutParams;
@@ -147,8 +142,8 @@ public class EditTextHint {
 
     /**
      * 对于LinearLayout，如果其中控件的width设置为0dp，相当于match_parent；
-     * 但是这样在RelaticeLayout中显示不出来，需要修改为MATCH_PARENT
-     * @param editText
+     * 但是这样在RelativeLayout中显示不出来，需要修改为MATCH_PARENT
+     * @param editText editText控件
      */
     private void amendEditTextLayoutParams(EditText editText) {
         if(editText.getLayoutParams().width==0)
