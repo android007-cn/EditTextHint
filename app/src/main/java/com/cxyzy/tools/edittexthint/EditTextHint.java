@@ -102,7 +102,8 @@ public class EditTextHint {
 
     public void showHint() {
         EditText editText = mActivity.findViewById(mEditTextResId);
-        ViewGroup parentLayout = null;
+        amendEditTextLayoutParams(editText);
+        ViewGroup parentLayout;
         final TextView textView = new TextView(mActivity);
         textView.setText(mHintText);
         textView.setTextColor(mHintColor);
@@ -112,10 +113,6 @@ public class EditTextHint {
             parentLayout = (RelativeLayout) editText.getParent();
             parentLayout.addView(textView);
         } else {
-            if(editText.getLayoutParams().width==0)
-            {
-                editText.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
-            }
             parentLayout = (ViewGroup) editText.getParent();
             RelativeLayout relativeLayout = new RelativeLayout(mActivity);
             int originalIndexInParent = parentLayout.indexOfChild(editText);
@@ -146,5 +143,17 @@ public class EditTextHint {
                 }
             }
         });
+    }
+
+    /**
+     * 对于LinearLayout，如果其中控件的width设置为0dp，相当于match_parent；
+     * 但是这样在RelaticeLayout中显示不出来，需要修改为MATCH_PARENT
+     * @param editText
+     */
+    private void amendEditTextLayoutParams(EditText editText) {
+        if(editText.getLayoutParams().width==0)
+        {
+            editText.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+        }
     }
 }
